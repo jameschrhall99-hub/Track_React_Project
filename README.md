@@ -1,75 +1,63 @@
-# React + TypeScript + Vite
+# ShipTrack
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ShipTrack is a lightweight project and issue tracking interface built with React and TypeScript. The current version presents a responsive projects workspace populated with sample project data. It is an early frontend prototype: project creation and database-backed saving are not implemented yet.
 
-Currently, two official plugins are available:
+## Current features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Responsive workspace layout with overview and projects navigation.
+- Sample project cards with status and summary details.
+- Reusable UI components styled with Tailwind CSS and shadcn conventions.
+- Geist Variable typography and light/dark theme tokens.
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 and TypeScript
+- Vite
+- Tailwind CSS 4
+- shadcn/ui component conventions, Base UI, and Lucide icons
+- Geist Variable
 
-## Expanding the ESLint configuration
+## Requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (a current LTS release is recommended)
+- npm
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Install dependencies and start the development server:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Vite prints the local URL in the terminal. To create and preview a production build:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run build
+npm run preview
 ```
+
+Run the linter with:
+
+```bash
+npm run lint
+```
+
+## Project structure
+
+```text
+src/
+  components/      Shared project and UI components
+  data/            Sample project data
+  lib/             Shared utilities
+  App.tsx          Main workspace screen
+  index.css        Tailwind setup and shadcn theme tokens
+  main.tsx         Application entry point
+```
+
+## Project status and next steps
+
+This repository currently contains the initial interface only. Authentication, project and issue editing, persistent storage, and deployment are planned future work. The longer-term product plan is in [`plan.md`](./plan.md), with the original concept in [`descr.md`](./descr.md).
+
+There is no live demo link or configured backend at this stage.

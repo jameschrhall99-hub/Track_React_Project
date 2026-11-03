@@ -3,6 +3,7 @@ import { AppLayout } from '@/app/app-layout'
 import { LoginPage } from '@/features/auth/login-page'
 import { ProjectsPage } from '@/features/projects/projects-page'
 import { NotFoundPage } from '@/pages/not-found-page'
+import { ProjectIssuesPage } from '@/features/projects/project-issues-page'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/app" element={<AppLayout />}>
         <Route index element={<Navigate to="projects" replace />} />
         <Route path="projects" element={<ProjectsPage />} />
+        <Route path="projects/:projectId" element={<ProjectIssuesPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />

@@ -1,3 +1,5 @@
+import { sampleIssues } from '@/data/sample-issues'
+
 export type ProjectSummary = {
   id: string
   name: string
@@ -6,26 +8,32 @@ export type ProjectSummary = {
   completedIssues: number
 }
 
+function getIssueCounts(projectId: string) {
+  const issues = sampleIssues.filter((issue) => issue.projectId === projectId)
+
+  return {
+    openIssues: issues.filter((issue) => issue.status !== 'done').length,
+    completedIssues: issues.filter((issue) => issue.status === 'done').length,
+  }
+}
+
 export const sampleProjects: ProjectSummary[] = [
   {
     id: 'website',
     name: 'Website redesign',
     description: 'Refresh the public website and improve the signup journey.',
-    openIssues: 8,
-    completedIssues: 4,
+    ...getIssueCounts('website'),
   },
   {
     id: 'mobile',
     name: 'Mobile app',
     description: 'Plan and build the first mobile experience for customers.',
-    openIssues: 5,
-    completedIssues: 2,
+    ...getIssueCounts('mobile'),
   },
   {
     id: 'tools',
     name: 'Internal tools',
     description: 'Make everyday support and reporting tasks easier.',
-    openIssues: 3,
-    completedIssues: 7,
+    ...getIssueCounts('tools'),
   },
 ]

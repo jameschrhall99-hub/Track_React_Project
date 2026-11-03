@@ -1,4 +1,5 @@
-import { Link, NavLink, Outlet } from 'react-router'
+import { Link, Outlet } from 'react-router'
+import { ProjectNavigation } from './project-navigation'
 
 export function AppLayout() {
   return (
@@ -25,24 +26,16 @@ export function AppLayout() {
             <span className="text-lg font-semibold">ShipTrack</span>
           </Link>
 
-          <nav aria-label="Main navigation" className="mt-6 flex flex-wrap gap-2 md:flex-col">
-            <NavLink
-              to="/app/projects"
-              className={({ isActive }) =>
-                `rounded-md px-3 py-2 text-sm focus-visible:outline-2 focus-visible:outline-ring ${
-                  isActive ? 'bg-secondary font-medium' : 'hover:bg-muted'
-                }`
-              }
-            >
-              Projects
-            </NavLink>
-            <Link
-              to="/login"
-              className="rounded-md px-3 py-2 text-sm hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring"
-            >
-              Login
-            </Link>
-          </nav>
+          <div className="hidden md:block">
+            <ProjectNavigation />
+          </div>
+
+          <details className="mt-4 md:hidden">
+            <summary className="cursor-pointer rounded-md px-3 py-2 text-sm font-medium focus-visible:outline-2 focus-visible:outline-ring">
+              Workspace navigation
+            </summary>
+            <ProjectNavigation />
+          </details>
 
           <p className="mt-6 text-xs text-muted-foreground">Sample workspace</p>
         </aside>

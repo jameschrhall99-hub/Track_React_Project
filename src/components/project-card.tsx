@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import { Badge } from '@/components/ui/badge'
 import {
   Card,
@@ -17,7 +18,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <Card className="h-full min-w-0">
       <CardHeader>
         <CardTitle>
-          <h2 className="wrap-break-word">{project.name}</h2>
+          <h2 className="wrap-break-word">
+            <Link
+              to={`/app/projects/${project.id}`}
+              className="rounded-sm underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-ring"
+            >
+              {project.name}
+            </Link>
+          </h2>
         </CardTitle>
         <CardDescription className="wrap-break-word">
           {project.description}

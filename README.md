@@ -19,15 +19,15 @@ ShipTrack is a lightweight project and issue tracking interface built with React
 
 ## Requirements
 
-- Node.js (a current LTS release is recommended)
+- Node.js (development environment: `v24.22.1`)
 - npm
 
 ## Getting started
 
-Install dependencies and start the development server:
+For an existing checkout with the committed `package-lock.json`, install the locked dependencies and start the development server:
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -38,11 +38,21 @@ npm run build
 npm run preview
 ```
 
-Run the linter with:
+## Development commands
 
-```bash
-npm run lint
-```
+Run these commands from the project directory:
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Vite development server; stop it with Ctrl+C. |
+| `npm run build` | Check TypeScript and create the production bundle in `dist`. |
+| `npm run lint` | Check the configured ESLint code rules. |
+| `npm run typecheck` | Check TypeScript without bundling the application. |
+| `npm test` | Run tests in watch mode, rerunning them when files change; stop with `q` or Ctrl+C. |
+| `npm run test:run` | Run tests once and exit automatically, suitable for non-interactive checks and CI. |
+| `npm run preview` | Serve the existing production build locally; run `npm run build` first. |
+
+Lint, typecheck, build, and `test:run` finish automatically and return a nonzero exit code if they fail.
 
 ## Project structure
 

@@ -19,6 +19,9 @@ dist-ssr
 desc.md
 plan.md
 
+# Local PowerShell test scripts (may contain test-account details)
+ps1_scripts/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

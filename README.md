@@ -38,6 +38,22 @@ npm run build
 npm run preview
 ```
 
+## Supabase environment setup
+
+The app needs a Supabase project URL and publishable key to start. For local development, create `.env.local` in the project root from the committed template. Run the copy command only for initial setup; if `.env.local` already exists, edit it so you do not overwrite your local values.
+
+```powershell
+Copy-Item .env.example .env.local
+# Edit .env.local, save it, then start or restart the server:
+npm run dev
+```
+
+Set `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in `.env.local`. Get both values from the same Supabase development project. Use the project's Connect dialog for connection details and its API Keys settings for the publishable key; see the [Supabase API keys guide](https://supabase.com/docs/guides/getting-started/api-keys).
+
+`.env.example` documents the required variable names; Vite does not load it automatically. Vite reads `.env.local` for local configuration. Restart the development server after changing the file. Values with the `VITE_` prefix are included in browser code at build time, so changes to hosting environment settings require a new build and deployment. Updating those settings does not change JavaScript that has already been built.
+
+If the setup screen still appears, check the variable spelling and confirm Windows did not add `.txt` to the filename (for example, `.env.local.txt`). Restart Vite after edits. Also check whether a shell environment variable or a mode-specific Vite env file is overriding the value.
+
 ## Development commands
 
 Run these commands from the project directory:
